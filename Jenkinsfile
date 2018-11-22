@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'mvn -Dmaven.test.failure.ignore=true install'
+                sh 'mvn -v'
                 //withMaven(maven : 'maven_3_6_0'){
                  //   sh 'mvn clean compile'
                // }
