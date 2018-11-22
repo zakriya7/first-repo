@@ -1,36 +1,18 @@
-pipeline {
-    agent any
-    tools {
-        maven 'Apache Maven 3.6.0'
-    }
-    stages {
-        stage('Pull') {
-            steps {
-                git url: 'https://github.com/talhakhannnnn/jenkins-practice-repo.git'
-                echo 'Pulling from git'
-            }
-        }
-        stage('Build') {
-            steps {
-                echo 'Building..'
-                sh 'mvn clean package'
-                //withMaven(maven : 'maven_3_6_0'){
-                 //   sh 'mvn clean compile'
-               // }
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                //withMaven(maven : 'maven_3_6_0'){
-                    sh 'mvn test'
-               // }
-            }
-        }
-        // stage('Deploy') {
-        //     steps {
-        //         echo 'Deploying....'
-        //     }
-        // }
-    }
+node {
+   def mvnHome
+   stage('Preparation') { 
+      git 'https://github.com/talhakhannnnn/jenkins-practice-repo.git'
+      
+      mvnHome = tool 'Apache Maven 3.6.0'
+   }
+   stage('Build') {
+      // Run the maven build
+      //if (isUnix()) {
+         //sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+      //} else {
+         //bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+      //}
+      bat(/"${mvnHome}\bin\mvn" --version)
+   }
+   
 }
