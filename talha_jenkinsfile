@@ -1,21 +1,14 @@
 pipeline {
-    agent any
-
-    stages {
-        stage('Pull') {
-            steps {
-                git url: 'https://github.com/talhakhannnnn/jenkins-practice-repo.git'
-                echo 'Pulling from git'
-            }
-        }
-       stage('Build') {
-       steps{
-        def mvn_version = 'Apache Maven 3.6.0'
-        withEnv( ["PATH+MAVEN=${tool mvn_version}/bin"] ) {
+    ageny any
+    tools {
+    maven 'mvn'
+  }
+  stages {
+    stage('Build') {
+      steps {
         sh 'mvn --version'
-        }
-        }
-       }
-   }
+      }
+    }
+  }
       
 }
