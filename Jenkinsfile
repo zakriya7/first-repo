@@ -11,9 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'mvn install'
-                sh 'mvn clean'
-                sh 'mvn compile'
+                sh 'mvn -B -DskipTests clean package'
                 //withMaven(maven : 'maven_3_6_0'){
                  //   sh 'mvn clean compile'
                // }
