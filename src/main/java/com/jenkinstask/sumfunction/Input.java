@@ -1,4 +1,4 @@
-package com.northbaysolutions.sumfunction;
+package com.jenkinstask.sumfunction;
 
 public class Input {
 
