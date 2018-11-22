@@ -20,9 +20,9 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                withMaven(maven : 'maven_3_6_0'){
+                //withMaven(maven : 'maven_3_6_0'){
                     sh 'mvn test'
-                }
+               // }
             }
         }
         // stage('Deploy') {
