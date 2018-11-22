@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    tools {
+        maven 'Apache Maven 3.6.0'
+    }
     stages {
         stage('Pull') {
             steps {
@@ -11,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'mvn clean'
+                sh 'mvn clean compile'
                 //withMaven(maven : 'maven_3_6_0'){
                  //   sh 'mvn clean compile'
                // }
