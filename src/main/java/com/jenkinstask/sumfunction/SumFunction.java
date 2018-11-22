@@ -1,4 +1,4 @@
-package com.northbaysolutions.sumfunction;
+package com.jenkinstask.sumfunction;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
