@@ -1,9 +1,5 @@
 pipeline {
     agent any
-     tools {
-        maven 'Maven 3.6.0'
-        jdk 'jdk8'
-    }
 
     stages {
         stage('Pull') {
@@ -15,10 +11,10 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'mvn -Dmaven.test.failure.ignore=true install'
-                // withMaven(maven : 'maven_3_6_0'){
-                  //  sh 'mvn clean compile'
-                //}
+                sh 'mvn clean'
+                //withMaven(maven : 'maven_3_6_0'){
+                 //   sh 'mvn clean compile'
+               // }
             }
         }
         stage('Test') {
