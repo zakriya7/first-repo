@@ -1,9 +1,18 @@
-node
+pipeline {
+    agent any
 
-{
-
-
-sh 'mvn clean package'
-
+    stages {
+        stage('Pull') {
+            steps {
+                git url: 'https://github.com/talhakhannnnn/jenkins-practice-repo.git'
+                echo 'Pulling from git'
+            }
+        }
+       stage('Build') {
+        def mvn_version = 'Apache Maven 3.6.0'
+        withEnv( ["PATH+MAVEN=${tool mvn_version}/bin"] ) {
+        sh 'mvn --version'
+        }
+   }
+      
 }
-
