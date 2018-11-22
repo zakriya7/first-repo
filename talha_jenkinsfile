@@ -12,7 +12,7 @@ node {
       //} else {
          //bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       //}
-      sh 'mvn --versison'
+      bat 'mvn --versison'
    }
    
 }
