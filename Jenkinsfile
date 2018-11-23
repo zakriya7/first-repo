@@ -1,9 +1,13 @@
 pipeline {
     agent {
         docker {
-            image 'ubuntu'
             image 'maven:3-alpine'
+            args '-v $HOME/.m2:/root/.m2'
         }
+    }
+    tools{
+        maven 'Apache'
+        jdk 'JDK 9'
     }
     stages{
         stage('Preparation'){
