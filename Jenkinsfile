@@ -1,18 +1,13 @@
-pipeline {
-    agent any
-    stages {
-        stage('Pull') {
-            steps {
-                git url: 'https://github.com/talhakhannnnn/jenkins-practice-repo.git'
-                echo 'Pulling from git'
-            }
-        }
-        stage('Build') {
-            steps {
-                echo 'building..'
-                sh 'make' 
-                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true 
-            }
-        }
-    }
+node {
+   def mvnHome
+   stage('Preparation') { 
+      git 'https://github.com/talhakhannnnn/jenkins-practice-repo.git'
+      
+      mvnHome = tool 'mvn-3.6.0'
+   }
+   stage('Build') {
+      echo 'Building'
+      bat(/"${mvnHome}\bin\mvn" --version/)
+   }
+   
 }
