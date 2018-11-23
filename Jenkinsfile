@@ -7,7 +7,7 @@ node {
    }
    stage('Build') {
       echo 'Building'
-      bat(/"${mvnHome}\bin\mvn" clean install/)
+      bat(/"${mvnHome}\bin\mvn" clean package/)
    }
    
 }
