@@ -1,5 +1,5 @@
-node {
-   agent any {
+pipeline {
+   agent any 
    def mvnHome
    stage('Preparation') { 
       git 'https://github.com/talhakhannnnn/jenkins-practice-repo.git'
@@ -14,6 +14,5 @@ node {
          //bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       //}
        bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
-   }
    }
 }
