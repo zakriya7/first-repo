@@ -5,7 +5,7 @@ pipeline{
       stage ('Compile Stage'){
          steps{
             withMaven(maven : 'Apache Maven 3.6.0'){
-               sh 'mvn clean compile'
+               bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
             }
          }
       }
