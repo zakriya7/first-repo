@@ -12,7 +12,7 @@ pipeline{
 
       stage ('Deploy Stage'){
          steps{
-            sshagent (['25f5ce22-f3b2-465d-b4fe-acc826416d76']){
+            sshagent (['e7e3412a-b927-4068-a782-fd8367ff0c17']){
                sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@52.87.161.28:/home/'
             }
          }
