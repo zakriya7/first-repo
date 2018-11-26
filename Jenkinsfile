@@ -1,39 +1,17 @@
-pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-v $HOME/.m2:/root/.m2'
-        }
-    }
-    tools{
-        maven 'Apache'
-        jdk 'JDK 9'
-    }
-    stages{
-        stage('Preparation'){
-            steps{
-                git 'https://github.com/Kamran-saeed/javasamplecode.git'
-            }
-        }
-    
-    
-        stage('Build') {
-            steps {
-                sh 'mvn clean install'
-            }
-        }
-    
-    
-        stage('Test') { 
-            steps {
-                sh 'mvn test' 
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml' 
-                }
-            }
-        }
+pipeline{
+   agent any
+   stages {
+      stage ('Build Stage'){
+         steps{
+            bat "mvn clean install"
+         }
+      }
 
-    }
-}
+      stage ('Deploy Stage'){
+         steps{
+            sshagent (['25f5ce22-f3b2-465d-b4fe-acc826416d76']){
+               sh "scp -o StrictHostKeyChecking=no target/*.war ec2-user@172.31.44.82:/home/"
+            }
+         }
+      }
+   }
